@@ -1,82 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <title>Rajwada Billing Display</title>
-</head>
-<body class="bg-gradient-to-b from-gray-100 to-gray-300 min-h-screen py-8">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Rajwada Billing Display</title>
+  </head>
+  <body class="bg-gradient-to-b from-gray-100 to-gray-300 min-h-screen py-8">
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap"
+      rel="stylesheet"
+    />
+    <div
+      class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-xl border border-gray-300"
+    >
+      <div
+        class="bg-black text-white p-6 rounded-md shadow-lg mx-auto text-center"
+      >
+        <!-- Top Gold Decoration -->
+        <div class="text-yellow-500 text-2xl mb-2 select-none">✦✦✦✦✦</div>
 
-  <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-xl border border-gray-300">
+        <!-- Main Title -->
+        <h1
+          class="text-5xl font-bold mb-2"
+          style="font-family: 'Great Vibes', cursive"
+        >
+          Rajwada's Creations
+        </h1>
 
-   <!-- Header (Professional Style like in your image) -->
-<div class="text-center border-b pb-4 mb-6">
-  <h1 class="text-3xl font-grate uppercase text-red-600">Rajwada's Creations</h1>
-  <p class="italic text-sm text-gray-700">By Limra Collection</p>
-  <p class="font-medium text-sm text-gray-800">(An Exclusive Groom Collection)</p>
-  <p class="text-xs text-gray-700 mt-1">EXCELLENCY IN: COAT SUITS, SHERWANI, INDO WESTERNS, JACKETS, BLAZER & ALL KINDS OF MENS WEAR</p>
-  <p class="text-xs text-gray-700">S.NO.-14, SUPER MARKET, IST FLOOR, NEAR KANYA VEDIK COLLEGE, GHAZIABAD (U.P.)</p>
-  <p class="text-xs text-gray-700 font-semibold">Mob: 9650090132, 9899377912, 9911226156</p>
-</div>
+        <!-- Subtitle -->
+        <p
+          class="text-xl italic mb-4"
+          style="font-family: 'Great Vibes', cursive"
+        >
+          The Designer Studio
+        </p>
+        <h1
+          class="text-3xl font-bold mb-2"
+          style="font-family: 'Great Vibes', cursive"
+        >
+          Billing
+        </h1>
 
+        <!-- Bottom Gold Decoration -->
+        <div class="text-yellow-500 text-2xl mb-4 select-none">✦✦✦✦✦</div>
 
-    <!-- Customer Info -->
-    <div class="mb-6 space-y-2 text-sm sm:text-base">
-      <p><span class="font-semibold">Order No:</span> <%= bill.order_no %></p>
-      <p><span class="font-semibold">Customer:</span> <%= bill.customer_name %></p>
-      <p><span class="font-semibold">Address:</span> <%= bill.address %></p>
-      <p><span class="font-semibold">Phone:</span> <%= bill.phone %></p>
-      <p>
-        <span class="font-semibold">Booking Date:</span> <%= bill.booking_date %> |
-        <span class="font-semibold">Delivery Date:</span> <%= bill.delivery_date %>
-      </p>
-    </div>
+        <!-- By Line -->
+        <p
+          class="text-sm text-gray-300 mb-2"
+          style="font-family: 'Poppins', sans-serif"
+        >
+          By Limra Collection
+        </p>
 
-    <!-- Items Table -->
-    <div class="overflow-x-auto">
-      <table class="w-full text-sm border border-gray-300">
-        <thead class="bg-gray-200 text-gray-700 font-semibold">
-          <tr>
-            <th class="border border-gray-300 p-2">S.No</th>
-            <th class="border border-gray-300 p-2">Description</th>
-            <th class="border border-gray-300 p-2">Amount</th>
-          </tr>
-        </thead>
-        <tbody class="text-gray-800">
-          <% bill.items.forEach(item => { %>
-            <tr class="hover:bg-gray-50">
-              <td class="border border-gray-300 p-2 text-center"><%= item.sno %></td>
-              <td class="border border-gray-300 p-2"><%= item.description %></td>
-              <td class="border border-gray-300 p-2 text-right">₹<%= item.amount %></td>
+        <!-- Tagline -->
+        <p
+          class="text-xs italic mb-1"
+          style="font-family: 'Poppins', sans-serif"
+        >
+          (An Exclusive Groom Collection)
+        </p>
+
+        <!-- Services -->
+        <p
+          class="text-xs mb-1 px-4 leading-relaxed"
+          style="font-family: 'Poppins', sans-serif"
+        >
+          EXCELLENCY IN: COAT SUITS, SHERWANI, INDO WESTERNS, JACKETS, BLAZER &
+          ALL KINDS OF MENS WEAR
+        </p>
+
+        <!-- Address -->
+        <p class="text-xs mb-1" style="font-family: 'Poppins', sans-serif">
+          S.NO.-14, SUPER MARKET, IST FLOOR, NEAR KANYA VEDIK COLLEGE, GHAZIABAD
+          (U.P.)
+        </p>
+
+        <!-- Mobile Numbers -->
+        <p class="text-xs mt-2" style="font-family: 'Poppins', sans-serif">
+          Mob: 9650090132, 9899377912, 9911226156
+        </p>
+      </div>
+
+      <!-- Customer Info -->
+      <div class="mb-6 space-y-2 text-sm sm:text-base py-4">
+        <p><span class="font-semibold">Order No:</span> <%= bill.order_no %></p>
+        <p>
+          <span class="font-semibold">Customer:</span> <%= bill.customer_name %>
+        </p>
+        <p><span class="font-semibold">Address:</span> <%= bill.address %></p>
+        <p><span class="font-semibold">Phone:</span> <%= bill.phone %></p>
+        <p>
+          <span class="font-semibold">Booking Date:</span> <%= bill.booking_date
+          %> | <span class="font-semibold">Delivery Date:</span> <%=
+          bill.delivery_date %>
+        </p>
+      </div>
+
+      <!-- Items Table -->
+      <div class="overflow-x-auto py-">
+        <table class="w-full text-sm border border-gray-300">
+          <thead class="bg-gray-200 text-gray-700 font-semibold">
+            <tr>
+              <th class="border border-gray-300 p-2">S.No</th>
+              <th class="border border-gray-300 p-2">Description</th>
+              <th class="border border-gray-300 p-2">Amount</th>
             </tr>
-          <% }) %>
-        </tbody>
-      </table>
-    </div>
+          </thead>
+          <tbody class="text-gray-800">
+            <% bill.items.forEach(item => { %>
+            <tr class="hover:bg-gray-50">
+              <td class="border border-gray-300 p-2 text-center">
+                <%= item.sno %>
+              </td>
+              <td class="border border-gray-300 p-2">
+                <%= item.description %>
+              </td>
+              <td class="border border-gray-300 p-2 text-right">
+                ₹<%= item.amount %>
+              </td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
 
-    <!-- Totals -->
-    <div class="mt-6 text-right text-sm sm:text-base space-y-1">
-      <p><span class="font-semibold">Total:</span> ₹<%= bill.total %></p>
-      <p><span class="font-semibold">Advance:</span> ₹<%= bill.advance %></p>
-      <p><span class="font-semibold">Balance:</span> ₹<%= bill.balance %></p>
-    </div>
+      <!-- Totals -->
+      <div class="mt-6 text-right text-sm sm:text-base space-y-1">
+        <p><span class="font-semibold">Total:</span> ₹<%= bill.total %></p>
+        <p><span class="font-semibold">Advance:</span> ₹<%= bill.advance %></p>
+        <p><span class="font-semibold">Balance:</span> ₹<%= bill.balance %></p>
+      </div>
 
-    <!-- Notes -->
-    <div class="mt-8 text-xs text-gray-600 bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
-      <ul class="list-disc pl-5 space-y-1">
-        <li>Please bring this slip when you call for your order.</li>
-        <li>We are not responsible for any alteration after delivery.</li>
-        <li>Please take your delivery within 30 days from the due date. Thereafter, we are not responsible for any garments.</li>
-      </ul>
-    </div>
+      <!-- Notes -->
+      <div
+        class="mt-8 text-xs text-gray-600 bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded"
+      >
+        <ul class="list-disc pl-5 space-y-1">
+          <li>Please bring this slip when you call for your order.</li>
+          <li>We are not responsible for any alteration after delivery.</li>
+          <li>
+            Please take your delivery within 30 days from the due date.
+            Thereafter, we are not responsible for any garments.
+          </li>
+        </ul>
+      </div>
 
-    <!-- Print Button -->
-    <div class="mt-6 text-center">
-      <button onclick="window.print()" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded shadow transition">
-        🖨️ Print Bill
-      </button>
+      <!-- Print Button -->
+      <div class="mt-6 text-center">
+        <button
+          onclick="window.print()"
+          class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded shadow transition"
+        >
+          🖨️ Print Bill
+        </button>
+      </div>
     </div>
-
-  </div>
-</body>
+  </body>
 </html>
