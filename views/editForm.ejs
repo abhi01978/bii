@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Edit Bill - Rajwada</title>
+</head>
+<body class="bg-gray-100 p-6">
+  <div class="max-w-3xl mx-auto bg-white p-6 rounded shadow">
+
+    <!-- Header -->
+    <div class="text-center border-b pb-4 mb-6">
+      <h1 class="text-3xl font-extrabold uppercase text-gray-900">Rajwada's Creations</h1>
+      <p class="italic text-sm text-gray-700">By Limra Collection</p>
+      <p class="font-medium text-sm text-gray-800">(An Exclusive Groom Collection)</p>
+      <p class="text-xs text-gray-700 mt-1">EXCELLENCY IN: COAT SUITS, SHERWANI, INDO WESTERNS, JACKETS, BLAZER & ALL KINDS OF MENS WEAR</p>
+      <p class="text-xs text-gray-700">S.NO.-14, SUPER MARKET, IST FLOOR, NEAR KANYA VEDIK COLLEGE, GHAZIABAD (U.P.)</p>
+      <p class="text-xs text-gray-700 font-semibold">Mob: 9650090132, 9899377912, 9911226156</p>
+    </div>
+
+    <!-- Form -->
+    <form action="/update/<%= bill._id %>" method="POST" class="space-y-4">
+
+      <div class="flex justify-between flex-wrap gap-2">
+        <input type="text" name="order_no" value="<%= bill.order_no %>" placeholder="Order No." class="border p-2 w-28" required />
+        <input type="date" name="booking_date" value="<%= bill.booking_date %>" class="border p-2" required />
+        <input type="date" name="delivery_date" value="<%= bill.delivery_date %>" class="border p-2" required />
+      </div>
+
+      <input type="text" name="customer_name" value="<%= bill.customer_name %>" placeholder="Customer's Name" class="border p-2 w-full" required />
+      <input type="text" name="address" value="<%= bill.address %>" placeholder="Address" class="border p-2 w-full" required />
+      <input type="text" name="phone" value="<%= bill.phone %>" placeholder="Phone" class="border p-2 w-full" required />
+
+      <!-- Items Table -->
+      <table class="w-full border text-sm">
+        <thead>
+          <tr class="bg-gray-200">
+            <th class="border p-1">S.No</th>
+            <th class="border p-1">Description</th>
+            <th class="border p-1">Amount</th>
+          </tr>
+        </thead>
+        <tbody id="items">
+          <% bill.items.forEach((item, i) => { %>
+            <tr>
+              <td class="border p-1"><input name="sno[]" value="<%= item.sno %>" class="w-full" /></td>
+              <td class="border p-1"><input name="description[]" value="<%= item.description %>" class="w-full" required /></td>
+              <td class="border p-1"><input name="amount[]" type="number" value="<%= item.amount %>" class="w-full" required /></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+
+      <button type="button" onclick="addRow()" class="mt-2 bg-green-500 text-white px-3 py-1 rounded">+ Add Row</button>
+
+      <div class="grid grid-cols-3 gap-4">
+        <input type="number" name="total" value="<%= bill.total %>" placeholder="Total" class="border p-2" required />
+        <input type="number" name="advance" value="<%= bill.advance %>" placeholder="Advance" class="border p-2" required />
+        <input type="number" name="balance" value="<%= bill.balance %>" placeholder="Balance" class="border p-2" required />
+      </div>
+
+      <button type="submit" class="mt-6 bg-blue-600 text-white px-4 py-2 rounded w-full">💾 Update Bill</button>
+    </form>
+  </div>
+
+  <script>
+    function addRow() {
+      document.getElementById('items').insertAdjacentHTML('beforeend',
+        `<tr>
+          <td class="border p-1"><input name="sno[]" class="w-full" /></td>
+          <td class="border p-1"><input name="description[]" class="w-full" required /></td>
+          <td class="border p-1"><input name="amount[]" type="number" class="w-full" required /></td>
+        </tr>`);
+    }
+  </script>
+</body>
+</html>

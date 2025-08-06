@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Rajwada Billing Form</title>
+</head>
+<body class="bg-gray-100 p-4">
+      <a href="/all-bills" class="underline">📄 View All Bills</a>
+
+  <div class="max-w-3xl mx-auto bg-white p-6 rounded shadow">
+
+    <!-- Header -->
+    <div class="bg-gradient-to-r from-red-600 to-yellow-400 text-white p-4 rounded mb-4 shadow">
+      <h1 class="text-3xl font-bold text-center uppercase">Rajwada's Creations</h1>
+      <p class="text-center italic">By Limra Collection</p>
+      <p class="text-center text-sm">(An Exclusive Groom Collection)</p>
+      <p class="text-center text-xs mt-1">EXCELLENCY IN: COAT SUITS, SHERWANI, INDO WESTERNS, JACKETS, BLAZER & ALL KINDS OF MENS WEAR</p>
+      <p class="text-center text-xs">S.NO.-14, SUPER MARKET, IST FLOOR, NEAR KANYA VEDIK COLLEGE, GHAZIABAD (U.P.)</p>
+      <p class="text-center text-xs">Mob: 9650090132, 9899377912, 9911226156</p>
+    </div>
+
+    <!-- Form -->
+    <form action="/submit" method="POST" class="space-y-4">
+      <div class="flex justify-between gap-2">
+        <input type="text" name="order_no" placeholder="Order No." class="border p-2 w-1/4" required />
+        <input type="date" name="booking_date" class="border p-2 w-1/3" required />
+        <input type="date" name="delivery_date" class="border p-2 w-1/3" required />
+      </div>
+
+      <input type="text" name="customer_name" placeholder="Customer's Name" class="border p-2 w-full" required />
+      <input type="text" name="address" placeholder="Customer Address" class="border p-2 w-full" required />
+      <input type="text" name="phone" placeholder="Mobile Number" class="border p-2 w-full" required />
+
+      <table class="w-full border text-sm">
+        <thead>
+          <tr class="bg-gray-200">
+            <th class="border p-1">S.No</th>
+            <th class="border p-1">Description</th>
+            <th class="border p-1">Amount</th>
+          </tr>
+        </thead>
+        <tbody id="items">
+          <tr>
+            <td class="border p-1"><input name="sno[]" value="1" class="w-full" /></td>
+            <td class="border p-1"><input name="description[]" class="w-full" required /></td>
+            <td class="border p-1"><input name="amount[]" type="number" class="w-full" required /></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <button type="button" onclick="addRow()" class="mt-2 bg-green-500 text-white px-2 py-1 rounded">+ Add Row</button>
+
+      <div class="grid grid-cols-3 gap-4">
+        <input type="number" name="total" placeholder="Total" class="border p-2" required />
+        <input type="number" name="advance" placeholder="Advance" class="border p-2" required />
+        <input type="number" name="balance" placeholder="Balance" class="border p-2" required />
+      </div>
+
+      <button type="submit" class="mt-6 bg-blue-600 text-white px-4 py-2 rounded w-full">Submit & Review</button>
+    </form>
+  </div>
+
+  <script>
+    function addRow() {
+      document.getElementById('items').insertAdjacentHTML('beforeend',
+        `<tr>
+          <td class="border p-1"><input name="sno[]" class="w-full" /></td>
+          <td class="border p-1"><input name="description[]" class="w-full" required /></td>
+          <td class="border p-1"><input name="amount[]" type="number" class="w-full" required /></td>
+        </tr>`);
+    }
+  </script>
+</body>
+</html>
