@@ -10,10 +10,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 
-mongoose.connect('mongodb+srv://abhishek:QaBYoGubKnvd3B6h@cluster0.qzdid.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+// ✅ Connect to MongoDB
+mongoose.connect('mongodb://127.0.0.1:27017/rajwadaBilling')
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.error("MongoDB Connection Failed:", err));
 
+// ✅ Updated Schema (removed 'items')
 const billingSchema = new mongoose.Schema({
   order_no: String,
   booking_date: String,
@@ -21,7 +23,6 @@ const billingSchema = new mongoose.Schema({
   customer_name: String,
   address: String,
   phone: String,
-  items: Array,
   total: Number,
   advance: Number,
   balance: Number
@@ -29,6 +30,7 @@ const billingSchema = new mongoose.Schema({
 
 const Billing = mongoose.model('Billing', billingSchema);
 
+// ✅ Routes
 app.get('/', (req, res) => {
   res.render('form');
 });
@@ -41,11 +43,6 @@ app.post('/submit', async (req, res) => {
     customer_name: req.body.customer_name,
     address: req.body.address,
     phone: req.body.phone,
-    items: req.body.description.map((desc, index) => ({
-      sno: req.body.sno[index],
-      description: desc,
-      amount: req.body.amount[index]
-    })),
     total: req.body.total,
     advance: req.body.advance,
     balance: req.body.balance
@@ -69,13 +66,10 @@ app.get('/all-bills', async (req, res) => {
     res.status(500).send('Error loading bills');
   }
 });
+
 app.get('/edit/:id', async (req, res) => {
   const bill = await Billing.findById(req.params.id);
   res.render('editForm', { bill });
-});
-app.post('/delete/:id', async (req, res) => {
-  await Billing.findByIdAndDelete(req.params.id);
-  res.redirect('/all-bills');
 });
 
 app.post('/update/:id', async (req, res) => {
@@ -86,11 +80,6 @@ app.post('/update/:id', async (req, res) => {
     customer_name: req.body.customer_name,
     address: req.body.address,
     phone: req.body.phone,
-    items: req.body.description.map((desc, index) => ({
-      sno: req.body.sno[index],
-      description: desc,
-      amount: req.body.amount[index]
-    })),
     total: req.body.total,
     advance: req.body.advance,
     balance: req.body.balance
@@ -100,6 +89,10 @@ app.post('/update/:id', async (req, res) => {
   res.redirect('/all-bills');
 });
 
+app.post('/delete/:id', async (req, res) => {
+  await Billing.findByIdAndDelete(req.params.id);
+  res.redirect('/all-bills');
+});
 
+// ✅ Start Server
 app.listen(3000, () => console.log('Server running at http://localhost:3000'));
-
