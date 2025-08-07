@@ -11,7 +11,7 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 
 // ✅ Connect to MongoDB
-mongoose.connect('mongodb+srv://abhishek:QaBYoGubKnvd3B6h@cluster0.qzdid.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+mongoose.connect('mongodb://127.0.0.1:27017/rajwadaBilling')
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.error("MongoDB Connection Failed:", err));
 
@@ -96,4 +96,3 @@ app.post('/delete/:id', async (req, res) => {
 
 // ✅ Start Server
 app.listen(3000, () => console.log('Server running at http://localhost:3000'));
-
