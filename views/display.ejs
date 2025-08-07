@@ -99,139 +99,100 @@
         <p class="text-xs mt-1">Mob: 9650090132, 9899377912, 9911226156</p>
       </div>
 
-      <!-- Bill Info -->
-      <div class="p-4 text-sm">
-        <div class="flex flex-wrap gap-4 mb-2">
-          <div class="w-full md:w-1/4">
-            <label class="block mb-1 text-gray-700">Order No.</label>
-            <input
-              type="text"
-              readonly
-              value="<%= bill.order_no %>"
-              class="border p-2 w-full"
-            />
-          </div>
-          <div class="w-full md:w-1/3">
-            <label class="block mb-1 text-gray-700">Booking Date</label>
-            <input
-              type="text"
-              readonly
-              value="<%= bill.booking_date %>"
-              class="border p-2 w-full"
-            />
-          </div>
-          <div class="w-full md:w-1/3">
-            <label class="block mb-1 text-gray-700">Delivery Date</label>
-            <input
-              type="text"
-              readonly
-              value="<%= bill.delivery_date %>"
-              class="border p-2 w-full"
-            />
-          </div>
-        </div>
+    <!-- Customer Info -->
+<div class="p-4 text-sm">
+  <div class="flex flex-wrap gap-4 mb-4">
+    <div class="w-full md:w-1/4">
+      <label class="block mb-1 text-gray-700">Order No.</label>
+      <input
+        type="text"
+        readonly
+        value="ORD123456"
+        class="border p-2 w-full"
+      />
+    </div>
+    <div class="w-full md:w-1/3">
+      <label class="block mb-1 text-gray-700">Booking Date</label>
+      <input
+        type="text"
+        readonly
+        value="2025-08-05"
+        class="border p-2 w-full"
+      />
+    </div>
+    <div class="w-full md:w-1/3">
+      <label class="block mb-1 text-gray-700">Delivery Date</label>
+      <input
+        type="text"
+        readonly
+        value="2025-08-15"
+        class="border p-2 w-full"
+      />
+    </div>
+  </div>
 
-        <div class="mb-2">
-          <label class="block mb-1 text-gray-700">Customer's Name</label>
-          <input
-            type="text"
-            readonly
-            value="<%= bill.customer_name %>"
-            class="border p-2 w-full"
-          />
-        </div>
+  <div class="mb-2">
+    <label class="block mb-1 text-gray-700">Customer's Name</label>
+    <input
+      type="text"
+      readonly
+      value="Raj Kumar"
+      class="border p-2 w-full"
+    />
+  </div>
 
-        <div class="mb-2">
-          <label class="block mb-1 text-gray-700">Customer Address</label>
-          <input
-            type="text"
-            readonly
-            value="<%= bill.address %>"
-            class="border p-2 w-full"
-          />
-        </div>
+  <div class="mb-2">
+    <label class="block mb-1 text-gray-700">Customer Address</label>
+    <input
+      type="text"
+      readonly
+      value="123 Street Name, Ghaziabad"
+      class="border p-2 w-full"
+    />
+  </div>
 
-        <div class="mb-2">
-          <label class="block mb-1 text-gray-700">Mobile Number</label>
-          <input
-            type="text"
-            readonly
-            value="<%= bill.phone %>"
-            class="border p-2 w-full"
-          />
-        </div>
+  <div class="mb-4">
+    <label class="block mb-1 text-gray-700">Mobile Number</label>
+    <input
+      type="text"
+      readonly
+      value="9876543210"
+      class="border p-2 w-full"
+    />
+  </div>
 
-        <!-- Items Table -->
-        <div class="mb-2">
-          <label class="block mb-1 text-gray-700">Order Details</label>
-          <table class="w-full border text-sm">
-            <thead>
-              <tr class="bg-gray-200 text-left">
-                <th class="border p-1 w-1/12">S.No</th>
-                <th class="border p-1">Description</th>
-                <th class="border p-1 w-1/4 text-right">Amount</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% bill.items.forEach((item, index) => { %>
-              <tr>
-                <td class="border p-1">
-                  <input
-                    readonly
-                    value="<%= item.sno %>"
-                    class="w-full border-none outline-none"
-                  />
-                </td>
-                <td class="border p-1">
-                  <input
-                    readonly
-                    value="<%= item.description %>"
-                    class="w-full border-none outline-none"
-                  />
-                </td>
-                <td class="border p-1 text-right">
-                  <input
-                    readonly
-                    value="₹<%= item.amount %>"
-                    class="w-full border-none outline-none text-right"
-                  />
-                </td>
-              </tr>
-              <% }) %>
-            </tbody>
-          </table>
-        </div>
+  <!-- Totals -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+    <div>
+      <label class="block mb-1 text-gray-700">Total</label>
+      <input
+        type="text"
+        readonly
+        value="₹3500"
+        class="border p-2 w-full"
+      />
+    </div>
+    <div>
+      <label class="block mb-1 text-gray-700">Advance</label>
+      <input
+        type="text"
+        readonly
+        value="₹1000"
+        class="border p-2 w-full"
+      />
+    </div>
+    <div>
+      <label class="block mb-1 text-gray-700">Balance</label>
+      <input
+        type="text"
+        readonly
+        value="₹2500"
+        class="border p-2 w-full"
+      />
+    </div>
+  </div>
+</div>
 
-        <!-- Totals -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-          <div>
-            <label class="block mb-1 text-gray-700">Total</label>
-            <input
-              type="text"
-              readonly
-              value="₹<%= bill.total %>"
-              class="border p-2 w-full"
-            />
-          </div>
-          <div>
-            <label class="block mb-1 text-gray-700">Advance</label>
-            <input
-              type="text"
-              readonly
-              value="₹<%= bill.advance %>"
-              class="border p-2 w-full"
-            />
-          </div>
-          <div>
-            <label class="block mb-1 text-gray-700">Balance</label>
-            <input
-              type="text"
-              readonly
-              value="₹<%= bill.balance %>"
-              class="border p-2 w-full"
-            />
-          </div>
-        </div>
 
         <!-- Notes -->
         <div
@@ -260,6 +221,7 @@
     </div>
   </body>
 </html>
+
 
 
 
