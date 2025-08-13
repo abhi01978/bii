@@ -158,19 +158,16 @@
               </tr>
             </thead>
             <tbody class="text-gray-800">
-              <% if (bill.items && bill.items.length > 0) { %>
-                <% bill.items.forEach((item, index) => { %>
+          
                   <tr class="hover:bg-gray-50">
-                    <td class="border border-gray-300 p-2 text-center"><%= item.sno || index + 1 %></td>
-                    <td class="border border-gray-300 p-2"><%= item.description || 'No description' %></td>
-                    <td class="border border-gray-300 p-2 text-right">₹<%= item.amount || 0 %></td>
+                    <td class="border border-gray-300 p-2 text-center">1</td>
+                <td class="border border-gray-300 p-2"><%= bill.description || 'No description' %></td>
                   </tr>
-                <% }) %>
-              <% } else { %>
+             
                 <tr>
                   <td colspan="3" class="text-center p-2 text-gray-500">No items found</td>
                 </tr>
-              <% } %>
+           
             </tbody>
           </table>
         </div>
@@ -199,3 +196,4 @@
 
 </body>
 </html>
+
