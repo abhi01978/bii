@@ -1,230 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Rajwada Billing Display</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      body {
-        font-family: "Poppins", sans-serif;
-        background-color: #f3f4f6;
+<head>
+  <meta charset="UTF-8" />
+  <title>Rajwada Billing Display</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #f3f4f6;
+    }
+    h1 {
+      font-family: "Great Vibes", cursive;
+    }
+    input[readonly] {
+      background: transparent;
+      border: none;
+      outline: none;
+      pointer-events: none;
+    }
+
+    .print-wrapper {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 0;
+      }
+      html, body {
+        width: 210mm;
+        height: 297mm;
+        margin: 0;
+        padding: 0;
+        background: white !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        overflow: hidden;
+      }
+      .no-print {
+        display: none !important;
       }
 
-      h1 {
-        font-family: "Great Vibes", cursive;
+      .page-container {
+        display: block !important;
+        height: auto !important;
       }
 
-      input[readonly] {
-        background: transparent;
-        border: none;
-        outline: none;
-        pointer-events: none;
+      .content {
+        display: block !important;
+        flex: unset !important;
       }
 
-      @media print {
-        @page {
-          size: A4;
-          margin: 1cm;
-        }
-
-        html,
-        body {
-          width: 210mm;
-          height: 297mm;
-          background: white !important;
-          margin: 0;
-          padding: 0;
-        }
-
-        .no-print {
-          display: none !important;
-        }
-
-        .page-container {
-          margin: 0 !important;
-          padding: 0 !important;
-          box-shadow: none !important;
-          border: none !important;
-          width: 100%;
-        }
-
-        input {
-          border: none !important;
-          outline: none !important;
-        }
+      .print-wrapper {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
       }
-    </style>
-  </head>
 
-  <body class="p-0 m-0">
-<div class="flex space-x-4">
-  <a href="/all-bills"
-     class="bg-blue-600 text-white px-5 py-2 rounded-md hover:bg-blue-700 transition duration-300">
-    All Bills
-  </a>
-  <a href="/"
-     class="bg-green-600 text-white px-5 py-2 rounded-md hover:bg-green-700 transition duration-300">
-    Add New Bill
-  </a>
-</div>
+      table, tr, td, th {
+        page-break-inside: avoid !important;
+      }
 
+      .notes {
+        page-break-inside: avoid !important;
+      }
+    }
+  </style>
+</head>
+<body class="p-0 m-0">
 
-<br>
-    <div class="bg-white shadow page-container w-full">
-      <!-- Header -->
-      <div
-        class="bg-black text-white p-4 text-center print:bg-white print:text-black print:border-b print:border-black"
-      >
-        <div class="text-yellow-500 text-xl mb-1 select-none">✦✦✦✦✦</div>
-        <h1 class="text-4xl font-bold mb-1">Rajwada's Creations</h1>
-        <p class="text-lg italic mb-2">The Designer Studio</p>
-        <h2 class="text-2xl font-bold mb-1">Billing</h2>
-        <div class="text-yellow-500 text-xl mb-2 select-none">✦✦✦✦✦</div>
-        <p class="text-xs text-gray-300 mb-1 print:text-black">
-          By Limra Collection
-        </p>
-        <p class="text-xs italic mb-1">(An Exclusive Groom Collection)</p>
-        <p class="text-xs mb-1 px-2 leading-tight">
-          EXCELLENCY IN: COAT SUITS, SHERWANI, INDO WESTERNS, JACKETS, BLAZER &
-          ALL KINDS OF MENS WEAR
-        </p>
-        <p class="text-xs mb-1">
-          S.NO.-14, SUPER MARKET, IST FLOOR, NEAR KANYA VEDIK COLLEGE, GHAZIABAD
-          (U.P.)
-        </p>
-        <p class="text-xs mt-1">Mob: 9650090132, 9899377912, 9911226156</p>
-      </div>
-
-    <!-- Customer Info -->
-<!-- Customer Info -->
-<div class="p-4 text-sm">
-  <div class="flex flex-wrap gap-4 mb-4">
-    <div class="w-full md:w-1/4">
-      <label class="block mb-1 text-gray-700">Order No.</label>
-      <input
-        type="text"
-        readonly
-        value="ORD123456"
-        class="border p-2 w-full"
-      />
-    </div>
-    <div class="w-full md:w-1/3">
-      <label class="block mb-1 text-gray-700">Booking Date</label>
-      <input
-        type="text"
-        readonly
-        value="2025-08-05"
-        class="border p-2 w-full"
-      />
-    </div>
-    <div class="w-full md:w-1/3">
-      <label class="block mb-1 text-gray-700">Delivery Date</label>
-      <input
-        type="text"
-        readonly
-        value="2025-08-15"
-        class="border p-2 w-full"
-      />
-    </div>
+  <div class="flex space-x-4 m-4 no-print">
+    <a href="/all-bills" class="bg-blue-600 text-white px-5 py-2 rounded-md hover:bg-blue-700">All Bills</a>
+    <a href="/" class="bg-green-600 text-white px-5 py-2 rounded-md hover:bg-green-700">Add New Bill</a>
   </div>
 
-  <div class="mb-2">
-    <label class="block mb-1 text-gray-700">Customer's Name</label>
-    <input
-      type="text"
-      readonly
-      value="Raj Kumar"
-      class="border p-2 w-full"
-    />
-  </div>
+  <!-- PRINT WRAPPER START -->
+  <div class="print-wrapper bg-white shadow page-container w-full p-0">
 
-  <div class="mb-2">
-    <label class="block mb-1 text-gray-700">Customer Address</label>
-    <input
-      type="text"
-      readonly
-      value="123 Street Name, Ghaziabad"
-      class="border p-2 w-full"
-    />
-  </div>
+    <!-- Header -->
+    <div class="bg-black text-white p-4 text-center header">
+      <div class="text-yellow-500 text-xl mb-1 select-none">✦✦✦✦✦</div>
+      <h1 class="text-4xl font-bold mb-1">Rajwada's Creations</h1>
+      <p class="text-lg italic mb-2">The Designer Studio</p>
+      <h2 class="text-2xl font-bold mb-1">Billing</h2>
+      <div class="text-yellow-500 text-xl mb-2 select-none">✦✦✦✦✦</div>
+      <p class="text-xs text-gray-300 mb-1">By Limra Collection</p>
+      <p class="text-xs italic mb-1">(An Exclusive Groom Collection)</p>
+      <p class="text-xs mb-1 px-2 leading-tight">
+        EXCELLENCY IN: COAT SUITS, SHERWANI, INDO WESTERNS, JACKETS, BLAZER & ALL KINDS OF MENS WEAR
+      </p>
+      <p class="text-xs mb-1">
+        S.NO.-14, SUPER MARKET, IST FLOOR, NEAR KANYA VEDIK COLLEGE, GHAZIABAD (U.P.)
+      </p>
+      <p class="text-xs mt-1">Mob: 9650090132, 9899377912, 9911226156</p>
+    </div>
 
-  <div class="mb-4">
-    <label class="block mb-1 text-gray-700">Mobile Number</label>
-    <input
-      type="text"
-      readonly
-      value="9876543210"
-      class="border p-2 w-full"
-    />
+    <!-- Main Content -->
+    <div class="content p-4 text-sm">
+      <div>
+        <!-- Top Fields -->
+        <!-- Top Fields (Optimized for Print) -->
+<div class="flex flex-row flex-wrap justify-between gap-4 mb-4 print:flex-nowrap print:gap-2">
+  <div class="flex-1 min-w-[150px]">
+    <label class="block mb-1 text-gray-700">Order No.</label>
+    <input type="text" readonly value="<%= bill.order_no %>" class="border p-2 w-full" />
   </div>
-
-  <!-- Totals -->
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-    <div>
-      <label class="block mb-1 text-gray-700">Total</label>
-      <input
-        type="text"
-        readonly
-        value="₹3500"
-        class="border p-2 w-full"
-      />
-    </div>
-    <div>
-      <label class="block mb-1 text-gray-700">Advance</label>
-      <input
-        type="text"
-        readonly
-        value="₹1000"
-        class="border p-2 w-full"
-      />
-    </div>
-    <div>
-      <label class="block mb-1 text-gray-700">Balance</label>
-      <input
-        type="text"
-        readonly
-        value="₹2500"
-        class="border p-2 w-full"
-      />
-    </div>
+  <div class="flex-1 min-w-[180px]">
+    <label class="block mb-1 text-gray-700">Booking Date</label>
+    <input type="text" readonly value="<%= bill.booking_date %>" class="border p-2 w-full" />
+  </div>
+  <div class="flex-1 min-w-[180px]">
+    <label class="block mb-1 text-gray-700">Delivery Date</label>
+    <input type="text" readonly value="<%= bill.delivery_date %>" class="border p-2 w-full" />
   </div>
 </div>
 
-
-
-        <!-- Notes -->
-        <div
-          class="text-xs text-gray-600 bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded"
-        >
-          <ul class="list-disc pl-5 space-y-1">
-            <li>Please bring this slip when you call for your order.</li>
-            <li>We are not responsible for any alteration after delivery.</li>
-            <li>
-              Please take your delivery within 30 days from the due date.
-              Thereafter, we are not responsible for any garments.
-            </li>
-          </ul>
+        <div class="mb-2">
+          <label class="block mb-1 text-gray-700">Customer's Name</label>
+          <input type="text" readonly value="<%= bill.customer_name %>" class="border p-2 w-full" />
         </div>
 
-        <!-- Print Button -->
-        <div class="mt-6 text-center no-print">
-          <button
-            onclick="window.print()"
-            class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded w-full"
-          >
-            🖨️ Print Bill
-          </button>
+        <div class="mb-2">
+          <label class="block mb-1 text-gray-700">Customer Address</label>
+          <input type="text" readonly value="<%= bill.address %>" class="border p-2 w-full" />
+        </div>
+
+        <div class="mb-4">
+          <label class="block mb-1 text-gray-700">Mobile Number</label>
+          <input type="text" readonly value="<%= bill.phone %>" class="border p-2 w-full" />
+        </div>
+
+        <!-- Totals -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+          <div>
+            <label class="block mb-1 text-gray-700">Total</label>
+            <input type="text" readonly value="₹<%= bill.total %>" class="border p-2 w-full" />
+          </div>
+          <div>
+            <label class="block mb-1 text-gray-700">Advance</label>
+            <input type="text" readonly value="₹<%= bill.advance %>" class="border p-2 w-full" />
+          </div>
+          <div>
+            <label class="block mb-1 text-gray-700">Balance</label>
+            <input type="text" readonly value="₹<%= bill.balance %>" class="border p-2 w-full" />
+          </div>
+        </div>
+
+        <!-- Items Table -->
+        <div class="overflow-x-auto mb-4">
+          <table class="w-full text-sm border border-gray-300">
+            <thead class="bg-gray-200 text-gray-700 font-semibold">
+              <tr>
+                <th class="border border-gray-300 p-2">S.No</th>
+                <th class="border border-gray-300 p-2">Description</th>
+              </tr>
+            </thead>
+            <tbody class="text-gray-800">
+              <% if (bill.items && bill.items.length > 0) { %>
+                <% bill.items.forEach((item, index) => { %>
+                  <tr class="hover:bg-gray-50">
+                    <td class="border border-gray-300 p-2 text-center"><%= item.sno || index + 1 %></td>
+                    <td class="border border-gray-300 p-2"><%= item.description || 'No description' %></td>
+                    <td class="border border-gray-300 p-2 text-right">₹<%= item.amount || 0 %></td>
+                  </tr>
+                <% }) %>
+              <% } else { %>
+                <tr>
+                  <td colspan="3" class="text-center p-2 text-gray-500">No items found</td>
+                </tr>
+              <% } %>
+            </tbody>
+          </table>
         </div>
       </div>
+
+      <!-- Notes (Bottom) -->
+     <!-- Notes (Bottom) -->
+<div class="notes text-sm text-gray-700 bg-yellow-100 border-l-4 border-yellow-400 p-3 rounded leading-snug break-words">
+  <ul class="list-disc pl-5 space-y-1">
+    <li>Please bring this slip when you call for your order.</li>
+    <li>We are not responsible for any alteration after delivery.</li>
+    <li>Please take your delivery within 30 days from the due date. Thereafter, we are not responsible for any garments.</li>
+  </ul>
+</div>
+
     </div>
-  </body>
+  </div>
+  <!-- PRINT WRAPPER END -->
+
+  <!-- Print Button -->
+  <div class="mt-4 text-center no-print px-4">
+    <button onclick="window.print()" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded w-full">
+      🖨️ Print Bill
+    </button>
+  </div>
+
+</body>
 </html>
-
-
-
-
-
