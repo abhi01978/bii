@@ -1,168 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>Rajwada Billing Form</title>
-  </head>
-  <body class="bg-gray-100 p-4">
-<div class="flex space-x-4">
-<a href="/all-bills"
-     class="bg-blue-600 text-white px-5 py-2 rounded-md hover:bg-blue-700 transition duration-300">
-    All Bills
-  </a>
-</div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rajwada Billing Form</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    .brand-font {
+      font-family: 'Great Vibes', cursive;
+    }
+  </style>
+</head>
 
-    <div class="max-w-3xl mx-auto bg-white p-6 rounded shadow">
-      <!-- Header -->
-      <!-- Google Fonts -->
-      <link
-        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap"
-        rel="stylesheet"
-      />
-
-<div
-        class="bg-black text-white p-6 rounded-md shadow-lg max-w-3xl mx-auto text-center"
-      >
-        <!-- Top Gold Decoration -->
-        <div class="text-yellow-500 text-2xl mb-2 select-none">✦✦✦✦✦</div>
-
-        <!-- Main Title -->
-        <h1
-          class="text-5xl font-bold mb-2"
-          style="font-family: 'Great Vibes', cursive"
-        >
-          Rajwada's Creations
-        </h1>
-
-        <!-- Subtitle -->
-        <p
-          class="text-xl italic mb-4"
-          style="font-family: 'Great Vibes', cursive"
-        >
-          The Designer Studio
-        </p>
-        <h1
-          class="text-3xl font-bold mb-2"
-          style="font-family: 'Great Vibes', cursive"
-        >
-          Billing
-        </h1>
-
-        <!-- Bottom Gold Decoration -->
-        <div class="text-yellow-500 text-2xl mb-4 select-none">✦✦✦✦✦</div>
-
-        <!-- By Line -->
-        <p
-          class="text-sm text-gray-300 mb-2"
-          style="font-family: 'Poppins', sans-serif"
-        >
-          By Limra Collection
-        </p>
-
-        <!-- Tagline -->
-        <p
-          class="text-xs italic mb-1"
-          style="font-family: 'Poppins', sans-serif"
-        >
-          (An Exclusive Groom Collection)
-        </p>
-
-        <!-- Services -->
-        <p
-          class="text-xs mb-1 px-4 leading-relaxed"
-          style="font-family: 'Poppins', sans-serif"
-        >
-          EXCELLENCY IN: COAT SUITS, SHERWANI, INDO WESTERNS, JACKETS, BLAZER &
-          ALL KINDS OF MENS WEAR
-        </p>
-
-        <!-- Address -->
-        <p class="text-xs mb-1" style="font-family: 'Poppins', sans-serif">
-          S.NO.-14, SUPER MARKET, IST FLOOR, NEAR KANYA VEDIK COLLEGE, GHAZIABAD
-          (U.P.)
-        </p>
-
-        <!-- Mobile Numbers -->
-        <p class="text-xs mt-2" style="font-family: 'Poppins', sans-serif">
-          Mob: 9650090132, 9899377912, 9911226156
-        </p>
-</div>
-
-      <!-- Form -->
-      <!-- Google Fonts (Optional) -->
-      <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap"
-        rel="stylesheet"
-      />
-
-
-<form action="/submit" method="POST" class="space-y-6">
-
-  <!-- Order Info Row -->
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-    <div>
-      <label for="order_no" class="block mb-1 font-medium">Order No.</label>
-      <input type="text" name="order_no" id="order_no" placeholder="Order No." class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-    </div>
-
-    <div>
-      <label for="booking_date" class="block mb-1 font-medium">Booking Date</label>
-      <input type="date" name="booking_date" id="booking_date" class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-    </div>
-
-    <div>
-      <label for="delivery_date" class="block mb-1 font-medium">Delivery Date</label>
-      <input type="date" name="delivery_date" id="delivery_date" class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-    </div>
+<body class="bg-gray-50 min-h-screen p-6">
+  <!-- Navigation -->
+  <div class="mb-6">
+    <a href="/all-bills"
+       class="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg shadow hover:bg-blue-700 transition duration-300 font-medium">
+      ← View All Bills
+    </a>
   </div>
 
-  <!-- Customer Info -->
-  <div>
-    <label for="customer_name" class="block mb-1 font-medium">Customer's Name</label>
-    <input type="text" name="customer_name" id="customer_name" placeholder="Full Name" class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-  </div>
-
-  <div>
-    <label for="address" class="block mb-1 font-medium">Customer Address</label>
-    <input type="text" name="address" id="address" placeholder="Full Address" class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-  </div>
-
-  <div>
-    <label for="phone" class="block mb-1 font-medium">Mobile Number</label>
-    <input type="text" name="phone" id="phone" placeholder="Mobile No." class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-  </div>
-
-  <!-- Payment Details -->
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-    <div>
-      <label for="total" class="block mb-1 font-medium">Total</label>
-      <input type="number" name="total" id="total" placeholder="Total" class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+  <!-- Container -->
+  <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+    <!-- Header -->
+    <div class="bg-black text-white p-6 rounded-md text-center">
+      <div class="text-yellow-500 text-2xl mb-2 select-none">✦✦✦✦✦</div>
+      <h1 class="text-5xl font-bold mb-1 brand-font">Rajwada's Creations</h1>
+      <p class="text-xl italic mb-2 brand-font">The Designer Studio</p>
+      <h2 class="text-3xl font-semibold mb-3 brand-font">Billing</h2>
+      <div class="text-yellow-500 text-2xl mb-4 select-none">✦✦✦✦✦</div>
+      <p class="text-sm text-gray-300 mb-1">By Limra Collection</p>
+      <p class="text-xs italic mb-1">(An Exclusive Groom Collection)</p>
+      <p class="text-xs leading-relaxed px-2 md:px-8">
+        EXCELLENCY IN: COAT SUITS, SHERWANI, INDO WESTERNS, JACKETS, BLAZER & ALL KINDS OF MENS WEAR
+      </p>
+      <p class="text-xs mt-2">
+        S.NO.-14, SUPER MARKET, 1ST FLOOR, NEAR KANYA VEDIK COLLEGE, GHAZIABAD (U.P.)
+      </p>
+      <p class="text-xs mt-1">Mob: 9650090132, 9899377912, 9911226156</p>
     </div>
-    <div>
-      <label for="advance" class="block mb-1 font-medium">Advance</label>
-      <input type="number" name="advance" id="advance" placeholder="Advance" class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-    </div>
-    <div>
-      <label for="balance" class="block mb-1 font-medium">Balance</label>
-      <input type="number" name="balance" id="balance" placeholder="Balance" class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-    </div>
-  </div>
 
-  <!-- Submit Button -->
-  <div>
-    <button type="submit" class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded shadow">
-      Submit & Review
-    </button>
+    <!-- Billing Form -->
+    <form action="/submit" method="POST" class="mt-10 space-y-6">
+      <!-- Order Information -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div>
+          <label for="order_no" class="block mb-1 text-sm font-semibold text-gray-700">Order No.</label>
+          <input type="text" name="order_no" id="order_no" placeholder="e.g. 12345"
+                 class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
+        </div>
+
+        <div>
+          <label for="booking_date" class="block mb-1 text-sm font-semibold text-gray-700">Booking Date</label>
+          <input type="date" name="booking_date" id="booking_date"
+                 class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
+        </div>
+
+        <div>
+          <label for="delivery_date" class="block mb-1 text-sm font-semibold text-gray-700">Delivery Date</label>
+          <input type="date" name="delivery_date" id="delivery_date"
+                 class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
+        </div>
+      </div>
+
+      <!-- Customer Info -->
+      <div>
+        <label for="customer_name" class="block mb-1 text-sm font-semibold text-gray-700">Customer's Name</label>
+        <input type="text" name="customer_name" id="customer_name" placeholder="Full Name"
+               class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
+      </div>
+
+      <div>
+        <label for="address" class="block mb-1 text-sm font-semibold text-gray-700">Customer Address</label>
+        <input type="text" name="address" id="address" placeholder="Full Address"
+               class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
+      </div>
+
+      <div>
+        <label for="phone" class="block mb-1 text-sm font-semibold text-gray-700">Mobile Number</label>
+        <input type="tel" name="phone" id="phone" placeholder="10-digit Mobile No."
+               pattern="[0-9]{10}" title="Please enter a valid 10-digit mobile number"
+               class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
+      </div>
+
+      <!-- Description -->
+      <div>
+        <label for="description" class="block mb-1 text-sm font-semibold text-gray-700">Description</label>
+        <textarea name="description" id="description" placeholder="Enter item details" rows="4"
+                  class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
+      </div>
+
+      <!-- Payment Info -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div>
+          <label for="total" class="block mb-1 text-sm font-semibold text-gray-700">Total Amount</label>
+          <input type="number" name="total" id="total" placeholder="e.g. 5000"
+                 class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
+        </div>
+
+        <div>
+          <label for="advance" class="block mb-1 text-sm font-semibold text-gray-700">Advance Paid</label>
+          <input type="number" name="advance" id="advance" placeholder="e.g. 2000"
+                 class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
+        </div>
+
+        <div>
+          <label for="balance" class="block mb-1 text-sm font-semibold text-gray-700">Balance Remaining</label>
+          <input type="number" name="balance" id="balance" placeholder="e.g. 3000"
+                 class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <div class="pt-4">
+        <button type="submit"
+                class="w-full bg-blue-600 text-white text-lg font-semibold py-3 rounded-lg shadow-md hover:bg-blue-700 transition duration-300">
+          Submit & Review
+        </button>
+      </div>
+    </form>
   </div>
-</form>
-    </div>
-   <br>
-  </body>
+</body>
 </html>
-
-
-
-
-
-
