@@ -25,7 +25,26 @@
       break-inside: avoid;
     }
 
+    /* ❌ Hidden on screen */
+    .watermark {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-30deg);
+      font-size: 6rem;
+      color: rgb(230, 94, 94);
+      font-family: "Great Vibes", cursive;
+      z-index: 0;
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+    }
+
     @media print {
+      .watermark {
+        display: block; /* ✅ Show only when printing */
+      }
       @page {
         size: A4;
         margin: 0;
@@ -43,26 +62,21 @@
       .no-print {
         display: none !important;
       }
-
       .page-container {
         display: block !important;
         height: auto !important;
       }
-
       .content {
         display: block !important;
         flex: unset !important;
       }
-
       .print-wrapper {
         page-break-inside: avoid !important;
         break-inside: avoid !important;
       }
-
       table, tr, td, th {
         page-break-inside: avoid !important;
       }
-
       .notes {
         page-break-inside: avoid !important;
       }
@@ -70,6 +84,9 @@
   </style>
 </head>
 <body class="p-0 m-0">
+
+  <!-- ✅ Watermark (only shows on print) -->
+  <div class="watermark">Rajwada's Creations</div>
 
   <div class="flex space-x-4 m-4 no-print">
     <a href="/all-bills" class="bg-blue-600 text-white px-5 py-2 rounded-md hover:bg-blue-700">All Bills</a>
@@ -79,15 +96,15 @@
   <!-- PRINT WRAPPER START -->
   <div class="print-wrapper bg-white shadow page-container w-full p-0">
 
-   <!-- Header -->
-    <div class="bg-white text-black p-4 text-center header">
+    <!-- Header -->
+    <div class="text-black p-4 text-center header">
       <div class="text-yellow-500 text-xl mb-1 select-none">✦✦✦✦✦</div>
-      <h1 class="text-4xl font-bold mb-1"><font color="red">Rajwada's Creations</font></h1>
+      <h1 class="text-4xl font-bold mb-1" style="color:red;">Rajwada's Creations</h1>
       <p class="text-lg italic mb-2">The Designer Studio</p>
       <h2 class="text-2xl font-bold mb-1">Billing</h2>
       <div class="text-yellow-500 text-xl mb-2 select-none">✦✦✦✦✦</div>
       <p class="text-xs text-gray-300 mb-1">By Limra Collection</p>
-      <p class="text-xs italic mb-1"><font  color="red">(An Exclusive Groom Collection)</font></p>
+      <p class="text-xs italic mb-1" style="color:red;">(An Exclusive Groom Collection)</p>
       <p class="text-xs mb-1 px-2 leading-tight">
         EXCELLENCY IN: COAT SUITS, SHERWANI, INDO WESTERNS, JACKETS, BLAZER & ALL KINDS OF MENS WEAR
       </p>
@@ -101,21 +118,20 @@
     <div class="content p-4 text-sm">
       <div>
         <!-- Top Fields -->
-        <!-- Top Fields (Optimized for Print) -->
-<div class="flex flex-row flex-wrap justify-between gap-4 mb-4 print:flex-nowrap print:gap-2">
-  <div class="flex-1 min-w-[150px]">
-    <label class="block mb-1 text-gray-700">Order No.</label>
-    <input type="text" readonly value="<%= bill.order_no %>" class="border p-2 w-full" />
-  </div>
-  <div class="flex-1 min-w-[180px]">
-    <label class="block mb-1 text-gray-700">Booking Date</label>
-    <input type="text" readonly value="<%= bill.booking_date %>" class="border p-2 w-full" />
-  </div>
-  <div class="flex-1 min-w-[180px]">
-    <label class="block mb-1 text-gray-700">Delivery Date</label>
-    <input type="text" readonly value="<%= bill.delivery_date %>" class="border p-2 w-full" />
-  </div>
-</div>
+        <div class="flex flex-row flex-wrap justify-between gap-4 mb-4 print:flex-nowrap print:gap-2">
+          <div class="flex-1 min-w-[150px]">
+            <label class="block mb-1 text-gray-700">Order No.</label>
+            <input type="text" readonly value="<%= bill.order_no %>" class="border p-2 w-full" />
+          </div>
+          <div class="flex-1 min-w-[180px]">
+            <label class="block mb-1 text-gray-700">Booking Date</label>
+            <input type="text" readonly value="<%= bill.booking_date %>" class="border p-2 w-full" />
+          </div>
+          <div class="flex-1 min-w-[180px]">
+            <label class="block mb-1 text-gray-700">Delivery Date</label>
+            <input type="text" readonly value="<%= bill.delivery_date %>" class="border p-2 w-full" />
+          </div>
+        </div>
 
         <div class="mb-2">
           <label class="block mb-1 text-gray-700">Customer's Name</label>
@@ -158,31 +174,26 @@
               </tr>
             </thead>
             <tbody class="text-gray-800">
-          
-                  <tr class="hover:bg-gray-50">
-                    <td class="border border-gray-300 p-2 text-center">1</td>
+              <tr class="hover:bg-gray-50">
+                <td class="border border-gray-300 p-2 text-center">1</td>
                 <td class="border border-gray-300 p-2"><%= bill.description || 'No description' %></td>
-                  </tr>
-             
-                <tr>
-                  <td colspan="3" class="text-center p-2 text-gray-500">No items found</td>
-                </tr>
-           
+              </tr>
+              <tr>
+                <td colspan="3" class="text-center p-2 text-gray-500">No items found</td>
+              </tr>
             </tbody>
           </table>
         </div>
       </div>
 
-      <!-- Notes (Bottom) -->
-     <!-- Notes (Bottom) -->
-<div class="notes text-sm text-gray-700 bg-yellow-100 border-l-4 border-yellow-400 p-3 rounded leading-snug break-words">
-  <ul class="list-disc pl-5 space-y-1">
-    <li>Please bring this slip when you call for your order.</li>
-    <li>We are not responsible for any alteration after delivery.</li>
-    <li>Please take your delivery within 30 days from the due date. Thereafter, we are not responsible for any garments.</li>
-  </ul>
-</div>
-
+      <!-- Notes -->
+      <div class="notes text-sm text-gray-700 bg-yellow-100 border-l-4 border-yellow-400 p-3 rounded leading-snug break-words">
+        <ul class="list-disc pl-5 space-y-1">
+          <li>Please bring this slip when you call for your order.</li>
+          <li>We are not responsible for any alteration after delivery.</li>
+          <li>Please take your delivery within 30 days from the due date. Thereafter, we are not responsible for any garments.</li>
+        </ul>
+      </div>
     </div>
   </div>
   <!-- PRINT WRAPPER END -->
@@ -196,6 +207,3 @@
 
 </body>
 </html>
-
-
-
